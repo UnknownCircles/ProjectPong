@@ -6,7 +6,7 @@ public class BallScript : MonoBehaviour
 {
     public Rigidbody2D ballRb;
     [SerializeField]
-    float ballForce = 10;
+    float ballForce = 2;
     float ballBounce = 10;
     private bool hitBorder;
     private bool hitplayer1;
