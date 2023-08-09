@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     [SerializeField] private float speed = 7;
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (Input.GetKey(KeyCode.W))
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector2.right * Time.deltaTime * speed);
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
@@ -27,5 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
+
+        
     }
 }
