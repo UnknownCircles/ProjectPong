@@ -7,10 +7,11 @@ public class BallScript : MonoBehaviour
     public Rigidbody2D ballRb;
     [SerializeField]
     float ballForce = 2;
-    float ballBounce = 10;
+    float ballBounce = 20;
     private bool hitBorder;
     private bool hitplayer1;
     private bool hitplayer2;
+    private bool hitAi;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class BallScript : MonoBehaviour
         float startRandomRangeLeft = Random.Range(-50f, -100f);
         float startRandomRange = Random.Range(startRandomRangeLeft, startRandomRangeRight);
         ballRb = ballRb.gameObject.GetComponent<Rigidbody2D>();
-        ballRb.AddForce(new Vector2(startRandomRange, 0)* ballForce);
+        ballRb.AddForce(new Vector2(startRandomRange, 0)* ballForce / 2);
     }
 
     // Update is called once per frame
@@ -55,6 +56,11 @@ public class BallScript : MonoBehaviour
         {
             ballRb.AddForce(Vector2.left * ballBounce);
         }
+
+        if (hitAi == true)
+        {
+            ballRb.AddForce(Vector2.left * ballBounce);
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -78,6 +84,12 @@ public class BallScript : MonoBehaviour
             hitplayer2 = true;
         }
 
+        if (collision.gameObject.CompareTag("AiPlayer"))
+        {
+
+            hitAi = true;
+        }
+
 
     }
 
@@ -99,6 +111,12 @@ public class BallScript : MonoBehaviour
         {
 
             hitplayer2 = false;
+        }
+
+        if (collision.gameObject.CompareTag("AiPlayer"))
+        {
+
+            hitAi = false;
         }
     }
 

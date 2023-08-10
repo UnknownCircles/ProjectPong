@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Border
   - Player 2
+  - AiPlayer
   layers:
   - Default
   - TransparentFX
